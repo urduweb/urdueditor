@@ -1,31 +1,32 @@
-.keyboardHeader
-{
-	color: White;
-	text-align:center;
-	margin:2px;
-	border: 2px outset;
-	border-color:#000;
-	padding:4px;
-	margin:0px 0px 5px;
-	background-color: #369;
+.keyboardHeader {
+    background: none repeat scroll 0 0 #415888;
+    border: 1px outset #000000;
+    color: #FFFFFF;
+    cursor: move;
+    margin: 0 0 5px;
+    padding: 2px;
+    text-align: center;
 }
-
-.keyboardContainer
-{
-	background: repeat scroll 0 0 #F7F7F7;
-	direction:ltr;
-	border-style:solid;
-	padding:10px;
+.keyboardContainer {
+    background: none repeat scroll 0 0 #F7F7F7;
+    border: 1px solid;
+    direction: ltr;
+    padding: 5px;
+    z-index: 100;
 }
-
-.keyboardPanel
-{
-	border-style:solid;
-	background:none repeat scroll 0 0 #EFEFEF;
-	border:2px outset;
-	color:#000000;
-	padding:10px;
-	direction:ltr;
+.keyboardContainerDragged {
+    background: none repeat scroll 0 0 #F7F7F7;
+    direction: ltr;
+    opacity: 0.4;
+    padding: 5px;
+    z-index: 100;
+}
+.keyboardPanel {
+    background: none repeat scroll 0 0 #EFEFEF;
+    border: 1px solid;
+    color: #000000;
+    direction: ltr;
+    padding: 4px;
 }
 
 .btnHelp 

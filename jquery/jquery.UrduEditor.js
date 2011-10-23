@@ -352,7 +352,7 @@ codes[String.fromCharCode(0x0651)] = 'تشدید';
 		
 	initKeyboard();
 	
-    $.fn.UrduEditor = function (size, options) {
+    $.fn.UrduEditor = function (options) {
 
         var kbNormal = 1;
         var kbShift = 2;
@@ -387,7 +387,7 @@ codes[String.fromCharCode(0x0651)] = 'تشدید';
             if ($(el).attr("UrduEditorId")) return;
             editorId = getId();
             $(el).attr("UrduEditorId", editorId);
-            setAttributes(el, size)
+            setAttributes(el, options)
 
             // keypress handler
             $(el).keypress(function (e) {
@@ -403,29 +403,17 @@ codes[String.fromCharCode(0x0651)] = 'تشدید';
 				var chr = whichChar;
 
 				if (chr) {
-					/*
-					*  try to create an event, then fallback to DocumentSelection, if something fails
-					*/
+
 					var virtualprint = false;
 					var win = DOM.getWindow(currEdit);
 					var charCode = e.charCode;
 
-					// Avoid processing if control or higher than ASCII
-					// Or ctrl or alt is pressed.
+
 					if (charCode < 0x0020 || charCode >= 0x007F || e.ctrlKey || e.altKey || e.metaKey)
 						return true;
 
-					/*
-					* there are some global exceptions, when createEvent won't work properly
-					*  - selection to set does exists
-					*  - multiple symbols should be inserted
-					*  - multibyte unicode symbol should be inserted
-					*/
-				   
 					var ck = codes[chr];
-					/*
-					*  trying to create an event, borrowed from YAHOO.util.UserAction
-					*/
+
 					if (ck != undefined)
 					{
 						if($.browser.msie)
@@ -455,9 +443,6 @@ codes[String.fromCharCode(0x0651)] = 'تشدید';
 								e.preventDefault();
 
 							} catch (ex) {
-								/*
-								*  Safari implements
-								*/
 								try {
 									evt = win.document.createEvent("TextEvent");
 									
@@ -493,13 +478,8 @@ codes[String.fromCharCode(0x0651)] = 'تشدید';
 						if ((charCode == 13) || (charCode == 8) || (charCode == 37) || (charCode == 39) || (charCode == 38) || (charCode == 40) || (charCode == 33) || (charCode == 34) || (charCode == 46) || (charCode == 50)) return;
 
 						var txt = String.fromCharCode(codes[whichChar])
-						//DocumentSelection.insertAtCursor(e.target, txt);
 						DocumentSelection.insertAtCursor(currEdit, txt);
-						/*
-						*  select as much, as __charProcessor callback requested
-						*/
 						if (chr[1]) {
-							//DocumentSelection.setRange(e.target, -txt, 0, true);
 							DocumentSelection.setRange(currEdit, -txt, 0, true);
 						}
 						
@@ -559,33 +539,12 @@ codes[String.fromCharCode(0x0651)] = 'تشدید';
 
         function setAttributes(el, pt) {
 			
-			if (el.tagName.toUpperCase() == "IFRAME") {
 		
-				var oDoc = el.contentWindow || el.contentDocument;
-				if (oDoc.document) {
-					oDoc = oDoc.document;
-				}
-				oDoc.body.style.direction = "rtl";
-
-				
-				var editorId = this.getID();
-				el.setAttribute("UrduEditorId", editorId);
-				this.Editors[editorId] = { UrduMode: 1, Editor: el };
-				currEdit = el; 
-				//this.addEvent(el.contentWindow.document, "keypress", this.ProcessKeypress);
-				//this.addEvent(el.contentWindow.document, "keydown", this.ProcessKeydown);
-				//this.addEvent(el.contentWindow.document, "focus", this.SetEditor);
-				//return;
-			}
-			
             el.lang = "ur";
             el.dir = "rtl";
             el.wrap = "soft";
             var editorId = $(el).attr("UrduEditorId");
 			Editors[editorId] = { UrduMode: 1};
-            //langArray[editorId] = 1;
-            //IsUrdu = 1;
-
             var urduBtn = $('<img />').attr('src', scriptPath + '/urdubtn.gif');
 			var englishBtn = $('<img />').attr('src', scriptPath + '/engbtn.gif');
 			var vkBtn = $('<img />').attr('src', scriptPath + '/keyboard.gif');
@@ -625,8 +584,6 @@ codes[String.fromCharCode(0x0651)] = 'تشدید';
 					$(el).after(vkBtn);
 				}
 			}
-			
-            
 			
             urduBtn.click(function () {setUrdu(el);})
 			englishBtn.click(function () {setEnglish(el);})
@@ -679,6 +636,7 @@ codes[String.fromCharCode(0x0651)] = 'تشدید';
     };
 
     $.fn.UrduEditor.defaults = {
+		PointSize:"13px",
         EditorFont: "Urdu Naskh Asiatype",
         EnglishColor: "#CCCCFF",
         UrduColor: "#99FF99",
