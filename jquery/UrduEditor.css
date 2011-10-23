@@ -1,0 +1,104 @@
+.keyboardHeader
+{
+	color: White;
+	text-align:center;
+	margin:2px;
+	border: 2px outset;
+	border-color:#000;
+	padding:4px;
+	margin:0px 0px 5px;
+	background-color: #369;
+}
+
+.keyboardContainer
+{
+	background: repeat scroll 0 0 #F7F7F7;
+	direction:ltr;
+	border-style:solid;
+	padding:10px;
+}
+
+.keyboardPanel
+{
+	border-style:solid;
+	background:none repeat scroll 0 0 #EFEFEF;
+	border:2px outset;
+	color:#000000;
+	padding:10px;
+	direction:ltr;
+}
+
+.btnHelp 
+{	
+	background: #ECECEC;
+	border: 1px solid #888888;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;
+	font-family:Urdu Naskh Asiatype, Tahoma;
+	font-size:14px;
+}
+
+.btnFlat 
+{	
+	background: #ECECEC;
+	border: 1px solid #888888;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;
+	font-family: Urdu Naskh Asiatype, Tahoma;
+	font-size:14px;
+}
+
+.btnRaised, .btnFlat:hover {
+	background: #D3D3D3;
+	border: 1px outset;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;
+	font-family:Urdu Naskh Asiatype, Tahoma;
+	font-size:14px;
+	font-weight:bold;
+}
+.btnLowered, .btnFlat:active {
+	background: #D3D3D3;
+	border: 1px inset;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;
+	font-family: Urdu Naskh Asiatype, Tahoma;
+	font-size:14px;
+}
+
+.btnSysFlat 
+{	
+	background: #808080;
+	border: 1px solid #888888;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;
+	font-family:Urdu Naskh Asiatype, Tahoma;
+	font-size:14px;
+}
+
+.btnSysRaised, .btnSysFlat:hover {
+	background: #333333;
+	border: 1px outset;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;
+	font-family:Urdu Naskh Asiatype, Tahoma;
+	font-size:14px;
+	font-weight:bold;
+}
+.btnSysLowered, .btnSysFlat:active {
+	background: #333333;
+	border: 1px inset;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;	
+	font-family:Urdu Naskh Asiatype, Tahoma;
+	font-size:14px;
+}
+.hiddentext {display:none}
+.outline {cursor:hand; text-decoration:underline}
