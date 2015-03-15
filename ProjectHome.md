@@ -1,0 +1,1 @@
+This project will host Urdu editor plugins for different JavaScript frameworks i.e. jQuery, MooTools, Prototype etc.
